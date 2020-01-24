@@ -6,7 +6,6 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,7 +34,7 @@ public class boardController {
 		return "write_view";
 	}
 	
-	@Transactional()
+
 	@RequestMapping("/write")
 	public String write(BoardVO boardVO, Model model) throws Exception {
 		System.out.println("write()");
@@ -72,7 +71,7 @@ public class boardController {
 		return "reply_view";
 	}
 	
-	@Transactional(rollbackFor=Exception.class)
+	//@Transactional(rollbackFor=Exception.class)
 	@RequestMapping("/reply")
 	public String reply(BoardVO boardVO,HttpServletRequest request, Model model) throws Exception {
 		System.out.println("reply()");

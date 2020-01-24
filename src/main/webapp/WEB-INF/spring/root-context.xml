@@ -14,7 +14,7 @@
 	</bean>
 	
 	<!-- [Spring] log4jdbc-remix 를 이용한 쿼리로그 출력 -->
-	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+ 	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
         <constructor-arg ref="dataSourceSpied" />
         <property name="logFormatter">
             <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
@@ -22,7 +22,7 @@
                 <property name="sqlPrefix" value="SQL         :  "/>
             </bean>
         </property>
- 	</bean>
+ 	</bean> 
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />

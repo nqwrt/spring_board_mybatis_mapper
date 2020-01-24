@@ -5,8 +5,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import edu.bit.board.mapper.BoardMapper;
@@ -53,7 +51,7 @@ public class BoardService {
     }
     
     //트랜잭션 테스트
-    @Transactional
+    //@Transactional
     public void transactionTest(BoardVO boardVO) {
     	insertBoard(boardVO);
     	
@@ -63,7 +61,7 @@ public class BoardService {
     }
     
     //@Transactional()
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	//@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void tranTest() 
 	{
 		
