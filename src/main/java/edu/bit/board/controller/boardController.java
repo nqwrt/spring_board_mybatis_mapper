@@ -3,7 +3,6 @@ package edu.bit.board.controller;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -41,14 +40,7 @@ public class boardController {
 	public String write(BoardVO boardVO, Model model) throws Exception {
 		System.out.println("write()");
 		
-		boardService.insertBoard(boardVO);
-		
-		//boardVO = null;
-		
-		boardService.insertBoard(boardVO);
-		
-		//Æ®·£Àè¼Ç ÀüÆÄ ¿¹
-		boardService.tranTest();
+		boardService.transactionTest(boardVO);
 				
 		return "redirect:list";
 	}
@@ -85,11 +77,11 @@ public class boardController {
 	public String reply(BoardVO boardVO,HttpServletRequest request, Model model) throws Exception {
 		System.out.println("reply()");
 
-		//Æ®·£Àè¼ÇÀ» À§ÇÑ ¿¹Á¦.
+		//Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		
 		boardService.updateShape(boardVO);
 		
-		//¿¡·¯¸¦ ³»±â À§ÇÑ ÀÏºÎ·¯ nullÀ» ¸¸µé¾î ¹ö¸²
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ÏºÎ·ï¿½ nullï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		boardVO.setbName(null);
 		boardService.insertReply(boardVO);	
 		
@@ -119,7 +111,7 @@ public class boardController {
    
 	    int totalCount = boardService.selectAllBoard();
 	    System.out.println(totalCount);
-	    System.out.println("ÀüÃ¼ °Ô½Ã¹° ¼ö¸¦ ±¸ÇÔ:" + totalCount);
+	    System.out.println("ï¿½ï¿½Ã¼ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½:" + totalCount);
 		pageMaker.setTotalCount(totalCount);
        
 		List<BoardVO> boardList = boardService.selectBoardListPage(criteria); 

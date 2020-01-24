@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,36 +20,46 @@ public class BoardService {
 	@Inject
 	BoardMapper boardMapper;
 	
-    public List<BoardVO> selectBoardList() throws Exception {
+    public List<BoardVO> selectBoardList()  {
 		return boardMapper.selectBoardList();
     }
     
 	//@Transactional(propagation=Propagation.REQUIRES_NEW)  
 	//@Transactional()  
-    public void insertBoard(BoardVO boardVO) throws Exception {
+    public void insertBoard(BoardVO boardVO)  {
     	boardMapper.insertBoard(boardVO);
     	
     	System.out.println(TransactionSynchronizationManager.getCurrentTransactionName());
     }
 
-    public BoardVO selectBoardOne(String bId) throws Exception {
+    public BoardVO selectBoardOne(String bId)  {
 		return boardMapper.selectBoardOne(bId);
     }
     
-    public List<BoardVO> selectBoardListPage(Criteria criteria) throws Exception {
+    public List<BoardVO> selectBoardListPage(Criteria criteria)  {
 		return boardMapper.selectBoardListPage(criteria);
     }
     
-    public int selectAllBoard() throws Exception {
+    public int selectAllBoard() {
 		return boardMapper.selectAllBoard();
     }
     
-    public void updateShape(BoardVO param) throws Exception {
+    public void updateShape(BoardVO param)  {
     	boardMapper.updateShape(param);
     }
     
-    public void insertReply(BoardVO param) throws Exception {
+    public void insertReply(BoardVO param)  {
     	boardMapper.insertReply(param);
+    }
+    
+    //트랜잭션 테스트
+    @Transactional
+    public void transactionTest(BoardVO boardVO) {
+    	insertBoard(boardVO);
+    	
+    	boardVO = null;
+    	
+    	insertBoard(boardVO);     	
     }
     
     //@Transactional()
