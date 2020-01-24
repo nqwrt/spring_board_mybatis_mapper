@@ -10,7 +10,7 @@
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
 		<property name="username" value="scott" />
-		<property name="password" value="1234" />
+		<property name="password" value="tiger" />
 	</bean>
 	
 	<!-- [Spring] log4jdbc-remix 를 이용한 쿼리로그 출력 -->
