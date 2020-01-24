@@ -16,7 +16,7 @@ import edu.bit.board.service.BoardService;
 import edu.bit.board.vo.BoardVO;
 
 @Controller
-public class boardController {
+public class BoardController {
 	@Inject
 	BoardService boardService;
 	
